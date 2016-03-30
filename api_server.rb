@@ -2,35 +2,30 @@
 require 'json'
 require 'sinatra'
 require 'sanitize'
+require "sinatra/activerecord"
+require "./lib/language/accent"
 
-get '/search' do
-  query = Sanitize.clean(params[:query])
+get '/search/:query' do |query|
   headers 'Access-Control-Allow-Origin' => '*'
+  words = Word.where("keyword LIKE ?", "%#{Language::Accent.strip(Sanitize.clean(query))}%").limit(50)
   content_type :json
-  {
-    results: [
-      { id: 123123, body: "beana", language: "northern sami" },
-      { id: 54363,  body: "begin", language: "english" },
-      { id: 54362,  body: "beduiini", language: "finnish" },
-      { id: 54361,  body: "bensin", language: "english" },
-      { id: 52041,  body: "bensiini", language: "finnish" },
-    ]
-  }.to_json
+  if words
+    {
+      results: words.map { |w| { id: w.id, body: w.body, language: w.language }}
+    }.to_json
+  else
+    status 404
+  end
 end
 
-get '/word/:id' do
-  query = Sanitize.clean(params[:id])
+get '/word/:id' do |id|
   headers 'Access-Control-Allow-Origin' => '*'
   content_type :json
-  {
-    word: { id: 123123, body: "beana", language: "northern sami" },
-    translations: [
-      { id: 54363,  body: "koira", language: "finnish" },
-      { id: 54363,  body: "hauva", language: "finnish" },
-      { id: 32567,  body: "piski", language: "finnish" },
-      { id: 1243,  body: "dog", language: "english" },
-      { id: 23455,  body: "hound", language: "english" },
-      { id: 3432,  body: "hund", language: "swedish" }
-    ]
-  }.to_json
+  word = Word.find( Sanitize.clean(id))
+  if word
+    word.as_json
+  else
+    # HTTP Not Found
+    status 404
+  end
 end
