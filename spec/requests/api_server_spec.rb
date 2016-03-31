@@ -32,15 +32,18 @@ describe "API Server" do
         id: 0,
         body: "beana",
         language: "northern_sami",
+        word_class: "undefined",
         translations: [
           {
             id: 1,
             body: "dog",
+            word_class: "undefined",
             language: "english"
           },
           {
             id: 2,
             body: "koira",
+            word_class: "undefined",
             language: "finnish"
           }
         ]
@@ -55,9 +58,9 @@ describe "API Server" do
       create_defaults!
       expected = {
                     results: [
-                      { id: 0, body: "beana", language: "northern_sami" },
-                      { id: 3, body: "begin", language: "english" },
-                      { id: 4, body: "beduiini", language: "finnish" }
+                      { id: 0, body: "beana", language: "northern_sami",word_class: "undefined" },
+                      { id: 3, body: "begin", language: "english", word_class: "undefined" },
+                      { id: 4, body: "beduiini", language: "finnish", word_class: "undefined" }
                     ]
                   }
       get "/search/be"

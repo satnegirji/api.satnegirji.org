@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327185616) do
+ActiveRecord::Schema.define(version: 20160330214700) do
+
+  create_table "languages", force: :cascade do |t|
+    t.string "code", null: false
+  end
+
+  add_index "languages", ["code"], name: "index_languages_on_code", unique: true
 
   create_table "translations", force: :cascade do |t|
     t.integer  "original_id",    null: false
@@ -28,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160327185616) do
     t.integer  "language_id", default: 0, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "word_class",  default: 0, null: false
   end
 
   add_index "words", ["keyword", "language_id"], name: "index_words_on_keyword_and_language_id"

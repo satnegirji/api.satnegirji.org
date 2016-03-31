@@ -11,7 +11,7 @@ get '/search/:query' do |query|
   content_type :json
   if words
     {
-      results: words.map { |w| { id: w.id, body: w.body, language: w.language }}
+      results: words.map { |w| { id: w.id, body: w.body, language: w.language, word_class: w.word_class }}
     }.to_json
   else
     status 404
