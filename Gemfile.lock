@@ -25,6 +25,7 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     nokogumbo (1.4.7)
       nokogiri
+    pg (0.18.2)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -54,6 +55,7 @@ PLATFORMS
 DEPENDENCIES
   json
   minitest
+  pg
   rack-test
   rake
   sanitize
