@@ -5,9 +5,8 @@ require 'sanitize'
 require "sinatra/activerecord"
 require "./lib/language/accent"
 
-configuration do
-  ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
-end
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+
 
 get '/search/:query' do |query|
   headers 'Access-Control-Allow-Origin' => '*'
