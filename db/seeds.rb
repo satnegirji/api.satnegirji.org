@@ -1,3 +1,7 @@
+require_relative "../models/word"
+require_relative "../models/translation"
+
+
 Word.delete_all
 Translation.delete_all
 beana = Word.create!( id: 0, body: "beana", keyword: "beana", language_id: Language.find_by_code("northern_sami"))

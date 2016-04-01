@@ -5,6 +5,10 @@ require 'sanitize'
 require "sinatra/activerecord"
 require "./lib/language/accent"
 
+configuration do
+  ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+end
+
 get '/search/:query' do |query|
   headers 'Access-Control-Allow-Origin' => '*'
   words = Word.where("keyword LIKE ?", "%#{Language::Accent.strip(Sanitize.clean(query))}%").limit(50)
