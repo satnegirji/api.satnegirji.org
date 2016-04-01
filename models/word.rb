@@ -1,4 +1,4 @@
-require_relative '../lib/language/word_class'
+require_relative '../lib/language'
 
 class Word < ActiveRecord::Base
   validates :body, presence: true

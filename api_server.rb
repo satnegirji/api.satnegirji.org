@@ -4,6 +4,8 @@ require 'sinatra'
 require 'sanitize'
 require "sinatra/activerecord"
 require "./lib/language/accent"
+require "./models/word"
+require "./models/translation"
 
 # ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 

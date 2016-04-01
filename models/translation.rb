@@ -1,3 +1,6 @@
+require_relative '../lib/language'
+
+
 class Translation < ActiveRecord::Base
   validates :original_id, presence: true
   validates :translation_id, presence: true
