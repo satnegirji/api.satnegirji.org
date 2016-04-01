@@ -1,3 +1,7 @@
+require_relative './language/accent'
+require_relative './language/word_class'
+
+
 module Language
 
   LANGUAGES = {

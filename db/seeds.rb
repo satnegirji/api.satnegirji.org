@@ -1,3 +1,4 @@
+require_relative "../lib/language"
 require_relative "../models/word"
 require_relative "../models/translation"
 
