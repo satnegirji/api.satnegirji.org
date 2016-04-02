@@ -14,3 +14,5 @@ Translation.create!(id: 0, original: beana, translated: dog)
 Translation.create!(id: 1, original: dog, translated: beana)
 Translation.create!(id: 2, original: beana, translated: koira)
 Translation.create!(id: 3, original: koira, translated: beana)
+puts "Words: #{Word.count}"
+puts "Translations: #{Translation.count}"
