@@ -24,10 +24,10 @@ get '/search' do
   end
 end
 
-get '/word/:id' do |id|
+get '/word' do
   headers 'Access-Control-Allow-Origin' => '*'
   content_type :json
-  word = Word.find( Sanitize.clean(id))
+  word = Word.find( Sanitize.clean(params[:id]))
   if word
     word.as_json
   else
