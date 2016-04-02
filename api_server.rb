@@ -10,8 +10,9 @@ require "./models/translation"
 # ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 
-get '/search/:query' do |query|
+get '/search' do
   headers 'Access-Control-Allow-Origin' => '*'
+  query = params[:query]
   words = Word.where("keyword LIKE ?", "%#{Language::Accent.strip(Sanitize.clean(query))}%").limit(50)
   content_type :json
   if words
