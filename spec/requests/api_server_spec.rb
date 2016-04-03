@@ -17,7 +17,7 @@ describe "API Server" do
     Translation.create!(id: 3, original: koira, translated: beana)
   end
 
-  describe "GET word/:id" do
+  describe "GET word?id=:id" do
 
     it "should return correct JSON" do
 
@@ -26,7 +26,7 @@ describe "API Server" do
 
       # GET word/0
 
-      get '/word/0'
+      get '/word?id=0'
       response = JSON.parse(last_response.body, symbolize_names: true)
       expected = {
         id: 0,
@@ -53,7 +53,7 @@ describe "API Server" do
 
   end
 
-  describe "GET search/:query" do
+  describe "GET search?query=:query" do
     it "should return translations when querying a valid word" do
       create_defaults!
       expected = {
@@ -63,7 +63,7 @@ describe "API Server" do
                       { id: 4, body: "beduiini", language: "finnish", word_class: "undefined" }
                     ]
                   }
-      get "/search/be"
+      get "/search?query=be"
       response = JSON.parse(last_response.body, symbolize_names: true)
       response.must_equal expected
     end

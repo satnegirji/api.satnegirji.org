@@ -1,4 +1,4 @@
-require_relative '../lib/language'
+require 'language'
 
 
 class Translation < ActiveRecord::Base

@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/satnegirji/language.git
+  revision: a9efdafd68e0f82376ecb5c32270e02ff86600ca
+  specs:
+    language (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -25,13 +31,13 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     nokogumbo (1.4.7)
       nokogiri
-    pg (0.18.2)
+    pg (0.18.4)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    rake (11.1.1)
+    rake (11.1.2)
     sanitize (4.0.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
@@ -54,6 +60,7 @@ PLATFORMS
 
 DEPENDENCIES
   json
+  language!
   minitest
   pg
   rack-test

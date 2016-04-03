@@ -3,7 +3,8 @@ require 'json'
 require 'sinatra'
 require 'sanitize'
 require "sinatra/activerecord"
-require "./lib/language/accent"
+require 'language'
+#require "./lib/language/accent"
 require "./models/word"
 require "./models/translation"
 

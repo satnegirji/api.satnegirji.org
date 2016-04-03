@@ -5,6 +5,8 @@ gem 'sinatra'
 gem 'json'
 gem 'sanitize'
 gem 'sinatra-activerecord'
+
+gem 'language', git: "git://github.com/satnegirji/language.git"
 group :development do
   gem 'sqlite3'
 end
